@@ -15,7 +15,7 @@ import { ServersService } from './servers/servers.service';
 
 const appRoutes: Routes = [
   { path: 'users', component: UsersComponent },
-  { path: 'users/:id', component: UserComponent }, // Use this to load a specific user
+  { path: 'users/:id/:name', component: UserComponent }, // Use this to load a specific user
   { path: 'servers', component: ServersComponent },
   { path: '', component: HomeComponent },
 ]

@@ -21,7 +21,6 @@ export class ServersComponent implements OnInit {
       // this.router.navigate(['servers'], {relativeTo: this.activatedRoute})
   }
 
-
   //===========================================
 
   constructor(private serversService: ServersService, 
