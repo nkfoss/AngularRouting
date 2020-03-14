@@ -20,13 +20,31 @@ export class UserComponent implements OnInit {
     };
 
     // Params outside of snapshots are observables, and unlike snapshots, can be used
-    // after the first load. It fires whenever new data is sent thru the vableober
+    // after the first load. It fires whenever new data is sent thru the vableober.
+    // This is useful if we are already on the page we want, but need to view different info.
     this.activeRoute.params.subscribe(
         (params: Params) => {
           this.user.id = params['id'];
           this.user.name = params['name']
         }
     );
+
+    // In the background, when this component is destroyed, Angular unsubscribes from the params.
+    // This is important. Just in case, you can implement the un-subscribe in ngOnDestroy.
+    // You'd implement it like this:
+
+    // (property)
+    // paramsSubscription: Subscription;
+
+    // (inside ngOnInit)
+    // {.... this.paramsSubscription = this.route.params.subscribe(
+    //    (params: Params) => .. etc. same thing.. }
+
+    // ngOnDestroy() { this.paramsSubscription.unsubscribe()}
+
+    }
+
+
   }
 
 }
