@@ -1,8 +1,12 @@
 <div class="row">
   <div class="col-xs-12 col-sm-4">
     <div class="list-group">
+      <!-- The queryParams directive below is related to the Angular Router -->
+      <!-- The fragment directive attaches a hastag to the end of the route -->
       <a
-        href="#"
+        [routerLink]="['/servers', 5, 'edit']"
+        [queryParams]="{allowEdit: 1}" 
+        [fragment]="'loading'"
         class="list-group-item"
         *ngFor="let server of servers">
         {{ server.name }}

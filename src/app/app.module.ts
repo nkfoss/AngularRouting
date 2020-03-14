@@ -17,6 +17,7 @@ const appRoutes: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'users/:id/:name', component: UserComponent }, // Use this to load a specific user
   { path: 'servers', component: ServersComponent },
+  { path: 'servers/:id/edit', component: EditServerComponent },
   { path: '', component: HomeComponent },
 ]
 
