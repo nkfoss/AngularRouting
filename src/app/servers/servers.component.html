@@ -7,7 +7,7 @@
       <!-- Also, we get the server.id dynamically from  *ngFor"let SERVER of servers-->
       <a
         [routerLink]="['/servers', server.id]"
-        [queryParams]="{allowEdit: 1}" 
+        [queryParams]="{allowEdit: server.id === 3 ? '1' : '0'}" 
         [fragment]="'loading'"
         class="list-group-item"
         *ngFor="let server of servers">
@@ -16,7 +16,6 @@
     </div>
   </div>
   <div class="col-xs-12 col-sm-4">
-    <button class="btn btn-primary" (click)="onReloadPage()"> Reload Page </button>
 
     <!-- All the child routes of the route being loaded on the ServersComponent -->
     <router-outlet></router-outlet>

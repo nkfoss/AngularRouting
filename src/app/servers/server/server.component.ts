@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ServersService } from '../servers.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-server',
@@ -11,8 +11,17 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class ServerComponent implements OnInit {
   server: {id: number, name: string, status: string};
 
+  // At this point, we are already on /servers/id...so we just use the relative path
+  // Since editting permission is granted from the SERVERS component when a single server is selected,
+  // we to pass it on when we click 'edit'. HOWEVER, to avoid overwriting the params in the URL,
+  // we must use queryParams: 'preserve'.
+  onEdit() {
+    this.router.navigate( ['edit'], {relativeTo: this.activatedRoute, queryParamsHandling: 'preserve'})
+  }
+
   constructor(private serversService: ServersService,
-   private activatedRoute: ActivatedRoute) { }
+   private activatedRoute: ActivatedRoute,
+   private router: Router) { }
 
   ngOnInit() {
 
