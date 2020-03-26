@@ -1,12 +1,13 @@
 <div class="row">
   <div class="col-xs-12 col-sm-4">
     <div class="list-group">
-      <a
-        href="#"
-        class="list-group-item"
-        *ngFor="let user of users">
+
+      <!-- So when we click on the element with the user name, it routes us to /users/:id/:name.
+          The user object comes from the *ngFor (let user of this.users) -->
+      <a [routerLink]="['/users', user.id, user.name]" href="#" class="list-group-item" *ngFor="let user of users">
         {{ user.name }}
       </a>
+
     </div>
   </div>
   <div class="col-xs-12 col-sm-4">

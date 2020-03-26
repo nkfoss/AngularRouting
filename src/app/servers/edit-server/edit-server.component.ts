@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ServersService } from '../servers.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit-server',
@@ -12,9 +13,16 @@ export class EditServerComponent implements OnInit {
   serverName = '';
   serverStatus = '';
 
-  constructor(private serversService: ServersService) { }
+  // We inject our activateRoute, so we can access the query parameters and fragment
+  constructor(private serversService: ServersService,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    
+    // Wisely, we subscribe to params instead of taking a snapshot. This is in case things change.
+    this.activatedRoute.queryParams.subscribe();
+    this.activatedRoute.fragment.subscribe();
+
     this.server = this.serversService.getServer(1);
     this.serverName = this.server.name;
     this.serverStatus = this.server.status;

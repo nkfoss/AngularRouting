@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ServersService } from '../servers.service';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-server',
@@ -10,10 +11,25 @@ import { ServersService } from '../servers.service';
 export class ServerComponent implements OnInit {
   server: {id: number, name: string, status: string};
 
-  constructor(private serversService: ServersService) { }
+  constructor(private serversService: ServersService,
+   private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.server = this.serversService.getServer(1);
+
+    // Initial params
+    // Notice the use of '+' here, and in the subscription.
+    // This is to convert the string returned from params, into a number. We need a number because our
+    // server id's are NOT strings, they are numbers. We cannot match without the correct type.
+    const id = +this.activatedRoute.snapshot.params['id'];
+    this.server = this.serversService.getServer(id);
+
+    // Update page when params change
+    this.activatedRoute.params.subscribe(
+      (params: Params) => {
+        let serverId = +params['id']
+        this.server = this.serversService.getServer(serverId)
+      }
+    )
   }
 
 }
