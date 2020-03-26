@@ -14,11 +14,8 @@ import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'users', component: UsersComponent },
 
-  // The :id and :name are dynamic parameters. We can load specific users.
-  { path: 'users/:id/:name', component: UserComponent },
+  { path: '', component: HomeComponent },
 
   // This children property allows us to use nested routing.
   { path: 'servers', component: ServersComponent, children: [ 
@@ -26,7 +23,14 @@ const appRoutes: Routes = [
     { path: ':id/edit', component: EditServerComponent } ] 
   },
 
+  { path: 'users', component: UsersComponent, children: [
+    {path: ':id/:name', component: UserComponent}
+  ] },
+
+  // NOTE: The :id and :name are dynamic parameters. This gives us flexibility
   
+
+
 
 ]
 
