@@ -13,28 +13,13 @@ import { EditServerComponent } from './servers/edit-server/edit-server.component
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AppRoutingModule } from './routing.module';
 
-const appRoutes: Routes = [
 
-  { path: '', component: HomeComponent },
+// Routing has moved to the routing.module
 
-  // This children property allows us to use nested routing.
-  // NOTE: The :id and :name are dynamic parameters. This gives us flexibility
-  { path: 'servers', component: ServersComponent, children: [ 
-    { path: ':id', component: ServerComponent }, 
-    { path: ':id/edit', component: EditServerComponent } ] 
-  },
-
-  { path: 'users', component: UsersComponent, children: [
-    {path: ':id/:name', component: UserComponent}
-  ] },
-
-  // Here we handle 404 errors, and also use redirection.
-  // *** IMPORTANT: Make sure the wildcard route is the LAST route on your route list.
-  { path: 'not-found', component: PageNotFoundComponent},
-  { path: '**', redirectTo: '/not-found'},
-
-]
+// const appRoutes: Routes = [
+// ]
 
 @NgModule({
   declarations: [
@@ -50,7 +35,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes) // This registers all our routes on the RouterModule
+    AppRoutingModule
   ],
   providers: [ServersService],
   bootstrap: [AppComponent]
