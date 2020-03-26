@@ -2,18 +2,37 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <ul class="nav nav-tabs">
+
+        <!-- RouterLink is used to navigate the app, without reloading it every time. -->
+
         <!-- routerLinkActive is an Angular directive that shows which tab you're on -->
         <!-- This analyzes your path, and makes the tab active if it's part of the path.
-        Erroneously, the home tab is always active, since it is part of all paths. 
-        Therefore, we use the exact: true option, so we only match the exact path for that tab-->
-        <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
-        <li role="presentation" routerLinkActive="active"><a routerLink="/servers">Servers</a></li>
-        <li role="presentation" routerLinkActive="active"><a [routerLink]="['/users']">Users</a></li>
+        Erroneously, the home tab is always active, since '/' is part of all paths specified. 
+        Therefore, we use the "exact: true" option, so we only match the exact path for that tab-->
+
+        <li role="presentation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/">Home</a> </li>
+
+          <!-- You must use the forward slash with the route. Without it, it tries to load a relative path. 
+                That means if you're on the servers component and click users, it will try to load /servers/users.
+                  This is not the desired behavior in our case. We use the direct path, which loads from the component
+                where this directive is situated (from the appComponent aka the root) -->
+
+        <li role="presentation" routerLinkActive="active">
+          <a routerLink="/servers">Servers</a> </li>
+
+        <li role="presentation" routerLinkActive="active">
+          <a [routerLink]="['/users']">Users</a></li>
+          <!-- As you can see, property binding can be used for RouterLink. It's best to use a string array. 
+                This will allow to include many segments of a complex route.-->
+
       </ul>
     </div>
   </div>
 
 
+  <!-- RouterOutlet is a directive. It tells the route to put 
+    it's selected component (specified by the route), put it here. -->
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <router-outlet></router-outlet>
