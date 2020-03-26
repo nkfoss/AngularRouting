@@ -14,11 +14,15 @@ import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
 
 const appRoutes: Routes = [
-  { path: 'users', component: UsersComponent },
-  { path: 'users/:id/:name', component: UserComponent }, // Use this to load a specific user
-  { path: 'servers', component: ServersComponent },
-  { path: 'servers/:id/edit', component: EditServerComponent },
   { path: '', component: HomeComponent },
+  { path: 'users', component: UsersComponent },
+
+  // The :id and :name are dynamic parameters. We can load specific users.
+  { path: 'users/:id/:name', component: UserComponent },
+
+  { path: 'servers', component: ServersComponent },
+  { path: 'servers/:id', component: ServerComponent },
+  { path: 'servers/:id/edit', component: EditServerComponent }
 ]
 
 @NgModule({
