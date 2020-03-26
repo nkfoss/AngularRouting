@@ -3,7 +3,7 @@
 ### Route Guarding:
 
 1. **app-routing.module**: Notice the 'canActivate' and 'canActivateChild' used with AuthGuard.
-2. **auth.service**: This is just a mock authentication service. It's self-explanatory and needed for the AuthGuard.
+2. **auth.service**: This is just a mock authentication service. It's self-explanatory and needed for the AuthGuard. It also is used by home.component for the log-in button.
 3. **auth-guard.service**: There are special methods called 'canActivate' and 'canActivateChild.
 
 
