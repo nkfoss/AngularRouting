@@ -16,12 +16,20 @@ const appRoutes: Routes = [
     // The :id and :name are dynamic parameters. 
     // This children property allows us to use nested routing.
     // CanActivate allows us to use our AuthGuard for servers and ALL child routes.
-    { path: 'servers', canActivate: [AuthGuard], component: ServersComponent, children: [ 
+    // CanActivateChild makes this so it applies ONLY to the child routes.
+    
+    { path: 'servers', 
+    // canActivate: [AuthGuard], 
+    canActivateChild: [AuthGuard],
+    component: ServersComponent, 
+    children: [ 
       { path: ':id', component: ServerComponent }, 
       { path: ':id/edit', component: EditServerComponent } ] 
     },
   
-    { path: 'users', component: UsersComponent, children: [
+    { path: 'users', 
+    component: UsersComponent, 
+    children: [
       {path: ':id/:name', component: UserComponent}
     ] },
   
