@@ -20,9 +20,14 @@ const appRoutes: Routes = [
   // The :id and :name are dynamic parameters. We can load specific users.
   { path: 'users/:id/:name', component: UserComponent },
 
-  { path: 'servers', component: ServersComponent },
-  { path: 'servers/:id', component: ServerComponent },
-  { path: 'servers/:id/edit', component: EditServerComponent }
+  // This children property allows us to use nested routing.
+  { path: 'servers', component: ServersComponent, children: [ 
+    { path: ':id', component: ServerComponent }, 
+    { path: ':id/edit', component: EditServerComponent } ] 
+  },
+
+  
+
 ]
 
 @NgModule({

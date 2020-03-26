@@ -17,9 +17,12 @@
   </div>
   <div class="col-xs-12 col-sm-4">
     <button class="btn btn-primary" (click)="onReloadPage()"> Reload Page </button>
-    <app-edit-server></app-edit-server>
+
+    <!-- All the child routes of the route being loaded on the ServersComponent -->
+    <router-outlet></router-outlet>
+    <!-- <app-edit-server></app-edit-server>
     <hr>
-    <!-- <app-server></app-server> -->
+    <app-server></app-server> -->
   </div>
 </div>
 
