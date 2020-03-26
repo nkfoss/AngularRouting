@@ -7,6 +7,7 @@ import { ActivatedRoute, Params } from '@angular/router'
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+
   user: {id: number, name: string};
 
   constructor(private activeRoute: ActivatedRoute) { }
@@ -14,13 +15,14 @@ export class UserComponent implements OnInit {
   ngOnInit() {
 
     // Snapshot gives you information about the route when the component is FIRST loaded
+    // ...we're just getting the ID and name from the URL.
     this.user = {
       id: this.activeRoute.snapshot.params['id'],
       name: this.activeRoute.snapshot.params['name']
     };
 
     // Params outside of snapshots are observables, and unlike snapshots, can be used
-    // after the first load. It fires whenever new data is sent thru the vableober.
+    // after the first load. It fires whenever new data is sent thru.
     // This is useful if we are already on the page we want, but need to view different info.
     this.activeRoute.params.subscribe(
         (params: Params) => {
@@ -29,7 +31,7 @@ export class UserComponent implements OnInit {
         }
     );
 
-    // In the background, when this component is destroyed, Angular unsubscribes from the params.
+    // *** IMPORTANT: In the background, when this component is destroyed, Angular unsubscribes from the params.
     // This is important. Just in case, you can implement the un-subscribe in ngOnDestroy.
     // You'd implement it like this:
 

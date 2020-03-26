@@ -17,6 +17,7 @@ export class ServersComponent implements OnInit {
       // Unlike the routerLink which always knows what component it resides in,
       // the navigate method doesn't know. It will do it from the root.
       // To remedy this we can use 'relativeTo' and 'Activated Route'
+      // See the commented-out code in the constructor.
 
       // this.router.navigate(['servers'], {relativeTo: this.activatedRoute})
   }
