@@ -13,3 +13,7 @@ If you would like keep some query params from the current URL, and apply them to
 2. **server.component.ts**: the 'edit' button triggers the onEdit() function. Notice the use of 'preserve' for the query params. 
 3. **edit-server.component.ts**: Edit permission is false by default. In ngOnInit, we check the query params, and then set the permission as appropriate.
 
+### Other topics
+
+1. **Redirects**: see the app.module
+
